@@ -3,8 +3,24 @@
 - Create React app 
 - Configured TailwindCSS 
 - Header
+- Routing of App 
 - Login form
 - Sign Up form
+- Form Validation
+- useRef Hook
+- Firebase setup
+- Deploying our app to production
+- Create Signup user account
+- Implement Sign In user API 
+- Created redux store with userSlice
+- Implemented Sign out 
+- Update profile
+- Bugfix: Sign up user displayName and picture update
+- Bugfix: if the user is not logged in redirect/ browse to login page and vice - versa
+- Unsubscribed to the onAuthStateChanged callback
+- Add hardcoded values to the constants file
+- Register OMDB API & create and app & get access token 
+- Get data from OMDB now playing movies list API 
 
 # Features
 - Login/Sign UP 
