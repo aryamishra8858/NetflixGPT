@@ -12,7 +12,7 @@ const MainContainer = () => {
 
     const {Title, Year, Poster, imdbID} = mainMovie;
   return (
-    <div className="relative">
+    <div className="pt-[30%] bg-black md:pt-0">
       <VideoBackground movieTitle={Title} />
       <VideoTitle Title={Title} Year={Year} Poster={Poster} />
     </div>
