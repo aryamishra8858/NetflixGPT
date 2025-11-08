@@ -10,11 +10,11 @@ const MainContainer = () => {
 
     const mainMovie = movies[0];
 
-    const {Title, Year, Poster, imdbID} = mainMovie;
+    const {Title, Year, imdbID} = mainMovie;
   return (
     <div className="pt-[30%] bg-black md:pt-0">
       <VideoBackground movieTitle={Title} />
-      <VideoTitle Title={Title} Year={Year} Poster={Poster} />
+      <VideoTitle Title={Title} Year={Year} />
     </div>
   )
 }

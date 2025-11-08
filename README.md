@@ -21,6 +21,23 @@
 - Add hardcoded values to the constants file
 - Register OMDB API & create and app & get access token 
 - Get data from OMDB now playing movies list API 
+- Custom Hook for now playing movies 
+- Create movieSlice
+- Update store with movies data 
+- Planning for Main Container and Secondary Container
+- Fetch data for trailer video 
+- Update store with trailer video data
+- Embedded the youtube video and make it autoplay and mute
+- Tailwind classes to make Main Container look awesome
+- Build Secondary Component
+- Build Movie List
+- Build Movie Card
+- OMDB Image path Url
+- Made the browser page amazing with tailwind css
+- usePopularMovies custom hook 
+- useHorrorMovies custom hook
+- useTrendingMovies custom hook
+- useUpcomingMovie custom hook 
 
 # Features
 - Login/Sign UP 
