@@ -38,6 +38,9 @@
 - useHorrorMovies custom hook
 - useTrendingMovies custom hook
 - useUpcomingMovie custom hook 
+- GPT Search Page
+- GPT Search Bar 
+- Multi-language feature in our App 
 
 # Features
 - Login/Sign UP 
