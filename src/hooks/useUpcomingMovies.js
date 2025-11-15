@@ -1,8 +1,7 @@
-// hooks/useUpcomingMovies.js
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { OMDB_API_KEY, OMDB_BASE_URL } from "../utils/constants";
 import { addUpcomingMovies } from "../utils/moviesSlice";
+import { OMDB_BASE_URL, OMDB_API_KEY } from "../utils/constants";
 
 const useUpcomingMovies = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,7 @@
-// hooks/useNowPlayingMovies.js
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { OMDB_API_KEY, OMDB_BASE_URL } from "../utils/constants";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
+import { OMDB_BASE_URL, OMDB_API_KEY } from "../utils/constants";
 
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
