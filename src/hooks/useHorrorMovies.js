@@ -1,10 +1,14 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addHorrorMovies } from "../utils/moviesSlice";
 import { OMDB_BASE_URL, OMDB_API_KEY } from "../utils/constants";
 
 const useHorrorMovies = () => {
   const dispatch = useDispatch();
+
+      const horrorMovies = useSelector(
+    (store) => store.movies.nowPlayingMovies
+  );
 
   const getHorrorMovies = async () => {
     const data = await fetch(
@@ -15,7 +19,7 @@ const useHorrorMovies = () => {
   };
 
   useEffect(() => {
-    getHorrorMovies();
+    !horrorMovies && getHorrorMovies();
   }, []);
 };
 

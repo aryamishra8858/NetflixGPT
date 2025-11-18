@@ -1,4 +1,3 @@
-// components/MovieList.js
 import React from "react";
 import MovieCard from "./MovieCard";
 
@@ -9,7 +8,7 @@ const MovieList = ({ title, movies }) => {
       <div className="flex overflow-x-scroll">
         <div className="flex">
           {movies?.map((movie, index) => (
-            <MovieCard key={movie.imdbID + "-" + index} posterPath={movie.Poster} />
+            <MovieCard key={movie.imdbID + "-" + index} movie={movie} />
           ))}
         </div>
       </div>

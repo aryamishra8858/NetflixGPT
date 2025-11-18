@@ -1,11 +1,13 @@
 // hooks/useMovieTrailer.js
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { YOUTUBE_API_KEY } from "../utils/constants";
 import { addTrailerVideo } from "../utils/moviesSlice";
 
 const useMovieTrailer = (movieTitle) => {
   const dispatch = useDispatch();
+
+  const trailerVideo = useSelector(store => store.movies.trailerVideo);
 
   const getMovieTrailer = async () => {
     const data = await fetch(
@@ -21,7 +23,7 @@ const useMovieTrailer = (movieTitle) => {
 
   useEffect(() => {
     if (movieTitle) {
-      getMovieTrailer();
+      !trailerVideo && getMovieTrailer();
     }
   }, [movieTitle]);
 };

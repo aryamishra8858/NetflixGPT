@@ -17,12 +17,12 @@ export const searchMovieByTitle = async (movieTitle) => {
 export const searchMoviesByQuery = async (query) => {
   try {
     const response = await fetch(
-      `${OMDB_BASE_URL}?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query)}`
+      `${OMDB_BASE_URL}?apikey=${OMDB_API_KEY}&s=${encodeURIComponent(query)}&type=movie`
     );
     const data = await response.json();
     return data;
   } catch (error) {
     console.error("OMDB API Error:", error);
-    return null;
+    return { Response: "False", Error: "Network error" };
   }
 };
