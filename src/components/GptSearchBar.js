@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import lang from "../utils/languageConstants";
 import { useDispatch, useSelector } from "react-redux";
 import { searchMovieByTitle } from "../utils/omdb";
-import { getGroqResponse } from "../utils/groq"; // ← Changed this line
+import { getGroqResponse } from "../utils/groq";
 import { addGptMovieResult } from "../utils/gptSlice";
 
 const GptSearchBar = () => {
@@ -25,15 +25,13 @@ const GptSearchBar = () => {
     setErrorMessage("");
 
     try {
-      // Create prompt for AI - ask for 15 movies
       const prompt = `As a movie expert, suggest exactly 15 popular movies for: "${query}". Reply with ONLY movie names separated by commas. No explanations, just: Movie1, Movie2, Movie3, Movie4, Movie5, Movie6, Movie7, Movie8, Movie9, Movie10, Movie11, Movie12, Movie13, Movie14, Movie15`;
 
       console.log("Sending prompt to AI...");
       
       let aiResponse;
       try {
-        // Get AI movie recommendations
-        aiResponse = await getGroqResponse(prompt); // ← Changed this line
+        aiResponse = await getGroqResponse(prompt);
         console.log("AI Response:", aiResponse);
       } catch (aiError) {
         console.error("AI API Error:", aiError);
@@ -42,7 +40,6 @@ const GptSearchBar = () => {
         return;
       }
 
-      // Parse movie names from response - clean up the response
       const cleanResponse = aiResponse
         .replace(/\n/g, ',')
         .replace(/\d+\./g, ',')
@@ -63,7 +60,6 @@ const GptSearchBar = () => {
         return;
       }
 
-      // Search each movie in OMDB with delay to avoid rate limits
       console.log("Searching movies in OMDB...");
       const movieResults = [];
       
@@ -73,7 +69,6 @@ const GptSearchBar = () => {
           if (result && result.Response === "True") {
             movieResults.push(result);
           }
-          // Small delay between requests to avoid rate limiting
           if (i < movieNames.length - 1) {
             await new Promise(resolve => setTimeout(resolve, 100));
           }
@@ -87,7 +82,6 @@ const GptSearchBar = () => {
       if (movieResults.length === 0) {
         setErrorMessage("No movies found in database. Try different search terms.");
       } else {
-        // Dispatch to Redux store
         dispatch(
           addGptMovieResult({
             movieNames: movieNames.slice(0, movieResults.length),
@@ -105,19 +99,19 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center flex-col items-center">
+    <div className="pt-[35%] sm:pt-[25%] md:pt-[12%] lg:pt-[10%] flex justify-center flex-col items-center px-4 sm:px-6 min-h-screen">
       <form
-        className="bg-black grid grid-cols-12 w-1/2"
+        className="bg-black bg-opacity-80 grid grid-cols-12 w-full sm:w-11/12 md:w-3/4 lg:w-1/2 rounded-lg"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
           type="text"
           placeholder={lang[langKey].getSearchPlaceholder}
-          className="p-4 m-4 col-span-9"
+          className="p-3 sm:p-4 m-2 sm:m-4 col-span-12 sm:col-span-9 rounded-lg text-sm sm:text-base"
         />
         <button
-          className="py-2 px-4 m-4 bg-red-700 text-white rounded-lg col-span-3 disabled:bg-gray-500 disabled:cursor-not-allowed"
+          className="py-2 sm:py-2 px-3 sm:px-4 m-2 sm:m-4 bg-red-700 text-white rounded-lg col-span-12 sm:col-span-3 disabled:bg-gray-500 disabled:cursor-not-allowed text-sm sm:text-base font-semibold"
           onClick={handleGptSearchClick}
           disabled={isLoading}
         >
@@ -125,15 +119,15 @@ const GptSearchBar = () => {
         </button>
       </form>
       {errorMessage && (
-        <div className="text-red-500 mt-2 bg-black bg-opacity-80 p-3 rounded max-w-xl text-center border border-red-500">
+        <div className="text-red-500 mt-4 bg-black bg-opacity-80 p-3 sm:p-4 rounded max-w-xl w-full sm:w-auto text-center border border-red-500 text-sm sm:text-base mx-4">
           {errorMessage}
         </div>
       )}
       {isLoading && (
-        <div className="text-white mt-2 bg-black bg-opacity-80 p-3 rounded">
-          <div className="flex items-center gap-2">
+        <div className="text-white mt-4 bg-black bg-opacity-80 p-3 sm:p-4 rounded mx-4">
+          <div className="flex items-center gap-2 justify-center">
             <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
-            <span>Finding best movies for you...</span>
+            <span className="text-sm sm:text-base">Finding best movies for you...</span>
           </div>
         </div>
       )}

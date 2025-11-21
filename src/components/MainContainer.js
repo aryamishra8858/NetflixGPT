@@ -1,4 +1,3 @@
-// components/MainContainer.js
 import React from 'react'
 import { useSelector } from 'react-redux'
 import VideoTitle from './VideoTitle';
@@ -12,7 +11,7 @@ const MainContainer = () => {
 
     const {Title, Year, imdbID} = mainMovie;
   return (
-    <div className="pt-[30%] bg-black md:pt-0">
+    <div className="pt-[30%] sm:pt-[20%] md:pt-0 bg-black w-full overflow-hidden">
       <VideoBackground movieTitle={Title} />
       <VideoTitle Title={Title} Year={Year} />
     </div>

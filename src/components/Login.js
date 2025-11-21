@@ -1,4 +1,3 @@
-// components/Login.js
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
@@ -90,18 +89,20 @@ const Login = () => {
   return (
     <div>
       <Header />
-      <div className="absolute">
+      <div className="fixed inset-0 -z-10">
         <img
+          className="w-full h-full object-cover"
           src={BG_URL}
           alt="Login Banner"
         />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
 
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 absolute p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
+        className="w-11/12 sm:w-9/12 md:w-6/12 lg:w-4/12 xl:w-3/12 absolute p-6 sm:p-8 md:p-10 lg:p-12 bg-black my-20 sm:my-28 md:my-32 lg:my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80"
       >
-        <h1 className="font-bold text-3xl py-4">
+        <h1 className="font-bold text-2xl sm:text-3xl py-3 sm:py-4">
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
 
@@ -110,7 +111,7 @@ const Login = () => {
             ref={nameRef}
             type="text"
             placeholder="Full Name"
-            className="p-4 my-4 w-full bg-gray-700 rounded-md"
+            className="p-3 sm:p-4 my-3 sm:my-4 w-full bg-gray-700 rounded-md text-sm sm:text-base"
           />
         )}
 
@@ -118,29 +119,29 @@ const Login = () => {
           ref={emailRef}
           type="text"
           placeholder="Email Address"
-          className="p-4 my-4 w-full bg-gray-700 rounded-md"
+          className="p-3 sm:p-4 my-3 sm:my-4 w-full bg-gray-700 rounded-md text-sm sm:text-base"
         />
 
         <input
           ref={passwordRef}
           type="password"
           placeholder="Password"
-          className="p-4 my-4 w-full bg-gray-700 rounded-md"
+          className="p-3 sm:p-4 my-3 sm:my-4 w-full bg-gray-700 rounded-md text-sm sm:text-base"
         />
 
         {errorMessage && (
-          <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
+          <p className="text-red-500 font-bold text-sm sm:text-base lg:text-lg py-2">{errorMessage}</p>
         )}
 
         <button
           type="button"
           onClick={handleButtonClick}
-          className="p-4 my-6 bg-red-700 w-full rounded-lg"
+          className="p-3 sm:p-4 my-4 sm:my-6 bg-red-700 w-full rounded-lg text-sm sm:text-base font-semibold hover:bg-red-800 transition-colors"
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 
-        <p className="py-4 cursor-pointer" onClick={toggleSignInForm}>
+        <p className="py-3 sm:py-4 cursor-pointer text-sm sm:text-base hover:underline" onClick={toggleSignInForm}>
           {isSignInForm
             ? "New to Netflix? Sign Up Now"
             : "Already have an account? Sign In"}
